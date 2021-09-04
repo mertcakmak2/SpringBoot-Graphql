@@ -1,0 +1,27 @@
+type QueryResolver {
+    employees: [Employee]
+    employee(id: ID!): Employee!
+}
+
+type MutationResolver {
+    newEmployee(employee: EmployeeInput!): Employee
+}
+
+input EmployeeInput {
+    firstName: String!
+    lastName: String!
+    position: String!
+    salary: Int
+    age: Int
+    departmentId: Int!
+}
+
+type Employee {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    position: String!
+    salary: Int
+    age: Int
+    department: Department
+}

@@ -1,0 +1,23 @@
+extend type QueryResolver {
+    departments: [Department]
+    department(id: ID!): Department!
+}
+
+extend type MutationResolver {
+    newDepartment(department: DepartmentInput!): Department
+}
+
+input DepartmentInput {
+    name: String!
+}
+
+type Department {
+    id: ID!
+    name: String!
+    employees: [Employee]
+}
+
+schema {
+    query: QueryResolver
+    mutation: MutationResolver
+}
