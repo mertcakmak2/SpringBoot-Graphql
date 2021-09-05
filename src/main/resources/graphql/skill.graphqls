@@ -3,3 +3,7 @@ type Skill {
     skillName: String
     employee: Employee
 }
+
+extend type QueryResolver {
+    skills: [Skill]
+}
