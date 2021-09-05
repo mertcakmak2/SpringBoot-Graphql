@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -19,6 +20,8 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String userName;
+    private String password;
     private String firstName;
     private String lastName;
     private String position;
@@ -27,4 +30,7 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+    @OneToMany( fetch = FetchType.EAGER, mappedBy = "employee")
+    private List<Skill> skills;
+
 }

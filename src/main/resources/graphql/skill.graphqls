@@ -1,0 +1,5 @@
+type Skill {
+    id: ID!
+    skillName: String
+    employee: Employee
+}

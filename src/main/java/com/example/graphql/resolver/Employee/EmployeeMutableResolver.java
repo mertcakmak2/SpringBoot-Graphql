@@ -18,9 +18,16 @@ public class EmployeeMutableResolver implements GraphQLMutationResolver {
 
     public Employee newEmployee(EmployeeInput employeeInput) {
         Department department = departmentRepository.findById(employeeInput.getDepartmentId()).get();
-        return employeeRepository.save(new Employee(null, employeeInput.getFirstName(), employeeInput.getLastName(),
-                employeeInput.getPosition(), employeeInput.getAge(), employeeInput.getSalary(),
-                department));
+
+        Employee employee = Employee.builder()
+                .firstName(employeeInput.getFirstName())
+                .lastName(employeeInput.getLastName())
+                .position(employeeInput.getPosition())
+                .age(employeeInput.getAge())
+                .salary(employeeInput.getSalary())
+                .department(department).build();
+
+        return employeeRepository.save(employee);
     }
 
 }

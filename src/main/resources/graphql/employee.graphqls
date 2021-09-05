@@ -18,10 +18,12 @@ input EmployeeInput {
 
 type Employee {
     id: ID!
+    userName: String
     firstName: String!
     lastName: String!
     position: String!
     salary: Int
     age: Int
     department: Department
+    skills: [Skill]
 }
